@@ -1,4 +1,6 @@
-import { g, config, auth } from '@grafbase/sdk';
+import { graph, config, auth } from '@grafbase/sdk';
+
+const g = graph.Standalone();
 
 // @ts-ignore
 const User = g
@@ -40,7 +42,7 @@ const jwt = auth.JWT({
 });
 
 export default config({
-  schema: g,
+  graph: g,
   auth: {
     providers: [jwt],
     rules: (rules) => rules.private(),
